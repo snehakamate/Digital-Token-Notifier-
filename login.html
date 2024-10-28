@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #14e7c0;
+}
+
+.Main {
+  width: 400px; /* Adjusted width for better fit */
+  margin: 50px auto; /* Center the form horizontally */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333; /* Changed text color for better contrast */
+}
+
+form {
+  width: 100%;
+}
+
+input[type=text], input[type=password] {
+  width: calc(100% - 40px); /* Adjusted input width for better fit */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.cancelbtn {
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+}
+
+img.avatar {
+  width: 30%; /* Adjusted avatar size */
+  border-radius: 50%; /* Fixed border radius */
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+  font-size: 14px; /* Adjusted font size for better readability */
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+  .Main {
+    width: 80%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="Main">
+  <h2>Login Form</h2>
+  <form id="loginForm">
+    <div class="imgcontainer">
+      <img src="https://cdn-icons-png.flaticon.com/512/6681/6681204.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+      <button type="button" onclick="login()">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+function login() {
+  var username = document.getElementById("uname").value;
+  var password = document.getElementById("psw").value;
+  
+  if (username === "" || password === "") {
+    alert("Please fill in both username and password.");
+  } else {
+    // Proceed with the login action
+    window.location.href = "service.html"; // Replace "service.html" with your desired login action
+  }
+}
+</script>
+
+</body>
+</html>

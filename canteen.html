@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Line Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>FOOD ORDER TABLE</h2>
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th> SR.NO</th>
+                    <th>Order ID</th>
+                    <th> Food Name</th>
+                    <th>Token No.</th>
+                    <th>Button</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated here -->
+            </tbody>
+        </table>
+        <button onclick="addRow()">Take Order</button>
+        <button onclick="submitData()">Submit</button>
+    </div>
+
+    <script>
+        var tokenCount = {
+            '1': false,
+            '2': false
+        };
+
+        // Load saved data from localStorage when the page loads
+        window.onload = function() {
+            var savedData = JSON.parse(localStorage.getItem('tableData'));
+            if (savedData) {
+                var table = document.getElementById("orderTable").getElementsByTagName('tbody')[0];
+                table.innerHTML = ""; // Clear existing rows
+                savedData.forEach(function(rowData) {
+                    var newRow = table.insertRow();
+                    newRow.innerHTML = `
+                        <td>${rowData.srNo}</td>
+                        <td><input type='text' placeholder='Order ID' value='${rowData.orderID}'></td>
+                        <td><input type='text' placeholder='Food Name' value='${rowData.foodName}'></td>
+                        <td><select><option value='1'>1</option><option value='2'>2</option></select></td>
+                        <td><button onclick='buzz(this)'>Buzz</button></td>
+                        <td><button onclick='removeRow(this)'>Remove</button></td>
+                    `;
+                    newRow.cells[3].querySelector('select').value = rowData.tokenNo;
+                    tokenCount[rowData.tokenNo] = rowData.tokenCount;
+                });
+            }
+        }
+
+        // Function to add a new row to the table
+        function addRow() {
+            var table = document.getElementById("orderTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+            cell1.innerHTML = table.rows.length;
+            cell2.innerHTML = "<input type='text' placeholder='Order ID'>";
+            cell3.innerHTML = "<input type='text' placeholder='Food Name'>";
+            cell4.innerHTML = "<select><option value='1'>1</option><option value='2'>2</option></select>";
+            cell5.innerHTML = "<button onclick='buzz(this)'>Buzz</button>";
+            cell6.innerHTML = "<button onclick='removeRow(this)'>Remove</button>";
+
+            // Save table data to localStorage
+            saveTableData();
+        }
+
+        // Function to remove a row from the table
+        function removeRow(button) {
+            var row = button.parentNode.parentNode;
+            var token = row.cells[3].querySelector('select').value;
+            tokenCount[token] = false;
+
+            // Store the removed row data in localStorage
+            var removedData = {
+                srNo: row.cells[0].innerText,
+                orderID: row.cells[1].querySelector('input').value,
+                foodName: row.cells[2].querySelector('input').value,
+                tokenNo: token,
+                tokenCount: tokenCount[token]
+            };
+
+            var removedRows = JSON.parse(localStorage.getItem('removedRows')) || [];
+            removedRows.push(removedData);
+            localStorage.setItem('removedRows', JSON.stringify(removedRows));
+
+            // Remove the row from the table
+            row.parentNode.removeChild(row);
+
+            // Save table data to localStorage
+            saveTableData();
+        }
+
+        // Function to save table data to localStorage
+        function saveTableData() {
+            var table = document.getElementById("orderTable").getElementsByTagName('tbody')[0];
+            var rowDataArray = [];
+            for (var i = 0; i < table.rows.length; i++) {
+                var rowData = {
+                    srNo: table.rows[i].cells[0].innerText,
+                    orderID: table.rows[i].cells[1].querySelector('input').value,
+                    foodName: table.rows[i].cells[2].querySelector('input').value,
+                    tokenNo: table.rows[i].cells[3].querySelector('select').value,
+                    tokenCount: tokenCount[table.rows[i].cells[3].querySelector('select').value]
+                };
+                rowDataArray.push(rowData);
+            }
+            localStorage.setItem('tableData', JSON.stringify(rowDataArray));
+        }
+
+        // Function to submit data and redirect to removedata1.html
+        function submitData() {
+            // Save table data before redirecting
+            saveTableData();
+            // Redirect to removedata1.html
+            window.location.href = "removedata1.html";
+        }
+
+        // Function to buzz
+        function buzz(button) {
+            var row = button.parentNode.parentNode;
+            var token = row.cells[3].querySelector('select').value;
+
+            tokenCount[token]++;
+            saveTableData(); // Save table data before redirecting
+
+            if (token === '1') {
+                window.location.href = "https://blynk.cloud/dashboard/273673/global/devices/2066805/organization/273673/devices/1014614/dashboard";
+            } else if (token === '2') {
+                window.location.href = "https://blynk.cloud/dashboard/273673/global/devices/2066805/organization/273673/devices/1066196/dashboard";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

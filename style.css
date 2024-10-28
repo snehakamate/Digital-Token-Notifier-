@@ -1,0 +1,227 @@
+/* CSS for the ellipse and other existing styles */
+.Rectangle1083 {
+    width: 1920px;
+    height: 1080px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(80px);
+}
+
+.DigitalTokenNotifier {
+    left: 100px;
+    top: 252px;
+    position: absolute;
+    color: #000000; 
+    font-size: 96px;
+    font-family: Poppins;
+    font-weight: 700;
+    letter-spacing: 2.88px;
+    word-wrap: break-word;
+}
+
+.RevolutionizeYourWaitingExperienceWithOurDigitalTokenNotifierPrototype {
+    left: 100px;
+    top: 550px;
+    position: absolute;
+    color: #000000;
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.Ellipse145 {
+    width: 16px;
+    height: 16px;
+    left: 641px;
+    top: 284.72px;
+    position: absolute;
+    background: linear-gradient(180deg, #C079F7 0%, #779EFC 100%);
+    border-radius: 9999px;
+}
+
+.Frame10145 {
+    left: 271px;
+    top: 117px;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+    display: inline-flex;
+}
+
+.Group10144 {
+    width: 48px;
+    height: 26px;
+    position: relative;
+}
+
+.Home,
+.Help,
+.About,
+.Feedback {
+    color: #262E5D;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.Rectangle2026 {
+    width: 10px;
+    height: 2px;
+    position: absolute;
+    background: #262E5D;
+}
+
+.Group2105 {
+    width: 207px;
+    height: 80px;
+    left: 100px;
+    top: 117px;
+    position: absolute;
+}
+
+.Group2104 {
+    width: 26px;
+    height: 26px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+.Group2104 .Ellipse60 {
+    width: 12px;
+    height: 12px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #69B1FF;
+    border-radius: 9999px;
+}
+
+.Group2104 .Ellipse61 {
+    width: 12px;
+    height: 12px;
+    left: 14px;
+    top: 14px;
+    position: absolute;
+    background: #73E8FF;
+    border-radius: 9999px;
+}
+
+.Group2104 .Ellipse62 {
+    width: 12px;
+    height: 12px;
+    left: 14px;
+    top: 0px;
+    position: absolute;
+    background: #FE6B9C;
+    border-radius: 9999px;
+}
+
+.Group2104 .Ellipse63 {
+    width: 12px;
+    height: 12px;
+    left: 0px;
+    top: 14px;
+    position: absolute;
+    background: #FE71E7;
+    border-radius: 9999px;
+}
+
+.Group2105 .Home {
+    width: 165px;
+    height: 78px;
+    left: 42px;
+    top: 2px;
+    position: absolute;
+    color: #262E5D;
+    font-size: 24px;
+    font-family: Abel;
+    font-weight: 400;
+    line-height: 22px;
+    word-wrap: break-word;
+}
+
+.Group10156 {
+    width: 393px;
+    height: 54px;
+    left: 100px;
+    top: 722px;
+    position: absolute;
+}
+
+.Frame10146 {
+    width: 175px;
+    height: 54px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #F5F7FB;
+    box-shadow: 2px 2px 4px #D0D0EB inset;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+}
+
+.Group10147 {
+    width: 80px;
+    height: 54px;
+    left: 313px;
+    top: 0px;
+    position: absolute;
+}
+
+.Rectangle2028 {
+    width: 80px;
+    height: 54px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: linear-gradient(118deg, #FFB7FF 3%, #7A29FF 90%);
+    box-shadow: -1px -2px 5px rgba(255, 255, 255, 0.44) inset;
+    border-radius: 100px;
+}
+
+.Rectangle2029Stroke {
+    width: 18.02px;
+    height: 17.75px;
+    left: 9.12px;
+    top: 7.18px;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.51) 0%, rgba(255, 255, 255, 0) 89%);
+}
+
+.Union {
+    width: 24.90px;
+    height: 24.90px;
+    left: 27.55px;
+    top: 14.55px;
+    position: absolute;
+}
+
+/* Added CSS for the image container */
+.ImageContainer {
+    position: absolute;
+    left: 1000px; /* Adjust as needed */
+    top: 200px; /* Adjust as needed */
+}
+
+/* Added CSS for the image */
+.ImageContainer img {
+    width: 600px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+body{
+  background-color:#14e7c0
+  
+}

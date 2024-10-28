@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Removed Data</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        @media print {
+            table {
+                width: 100%;
+            }
+
+            th,
+            td {
+                padding: 8px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Removed Data</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>SR.NO</th>
+                <th>Customer Name</th>
+                <th>Service Name</th>
+                <th>Token No.</th>
+            </tr>
+        </thead>
+        <tbody id="removedDataBody">
+            <!-- Removed data will be dynamically populated here -->
+        </tbody>
+    </table>
+
+    <button onclick="printAndSave()">Print Table & Save</button>
+    <button onclick="removeTable()">Remove Table</button> <!-- New button added -->
+
+    <script>
+        // Retrieve removed data from localStorage
+        var removedRows = JSON.parse(localStorage.getItem('removedRows')) || [];
+        var removedDataBody = document.getElementById('removedDataBody');
+
+        // Populate the table with removed data
+        removedRows.forEach(function (rowData) {
+            var row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${rowData.srNo}</td>
+                <td>${rowData.CustomerName}</td>
+                <td>${rowData.ServiceName}</td>
+                <td>${rowData.tokenNo}</td>
+            `;
+            removedDataBody.appendChild(row);
+        });
+
+        // Function to print the table and save as HTML file
+        function printAndSave() {
+            // Print the table
+            window.print();
+
+            // Get the HTML content of the table
+            var tableContent = document.documentElement.innerHTML;
+
+            // Create a Blob with the HTML content
+            var blob = new Blob([tableContent], { type: 'text/html' });
+
+            // Create a temporary anchor element to download the file
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'removed_data.html3';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+
+            // Trigger the click event on the anchor element to start downloading
+            a.click();
+
+            // Remove the temporary anchor element
+            document.body.removeChild(a);
+        }
+
+        // Function to remove table data from local storage
+        function removeTable() {
+            localStorage.removeItem('removedRows');
+            removedDataBody.innerHTML = ''; // Clear the table content
+        }
+    </script>
+
+</body>
+
+</html>
